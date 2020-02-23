@@ -21,24 +21,34 @@ public class Repli_129 {
 //        fewValues ->["e", "hey", "bye", "furey"]
 
         System.out.println("-----EXAMPLE RUN ---------");
-        String[] numbers = {"zero", "one", "two","three","four"};
-        System.out.println(Arrays.toString((numbers)));
-
-        int countOfE=0;
-        String wordsWithE="";
-
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i].contains("e")){
-                wordsWithE=wordsWithE+numbers[i]+" ";
-                countOfE++;
-            }
-        }
-        String withoutSpace=wordsWithE.substring(0,wordsWithE.length()-1);
-        String[] fewValues=withoutSpace.split(" ");
-        System.out.println(Arrays.toString(fewValues));
-
-
+        String[] numbers = {"zero", "one", "two", "three", "four","eye","apple"};
+        System.out.println(Arrays.toString(numbers));
+        System.out.println(Arrays.toString(getWithE(numbers)));
 
 
     }
+        public static String[] getWithE(String[] arr) {
+
+            //TODO : YOUR CODE GOES HERE ----------------------
+            int countOfE=0;
+            String wordsWithE="";
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i].contains("e")){
+                    wordsWithE=wordsWithE+arr[i]+",";
+                    countOfE++;
+                }
+            }
+            wordsWithE=wordsWithE.substring(0,wordsWithE.length()-1);
+            String[] fewValues=new String[countOfE];
+            fewValues=wordsWithE.split(",");
+
+
+            //YOUR CODE ENDS HERE -----------------------
+
+            return fewValues;
+        }
+
+
+
+
 }

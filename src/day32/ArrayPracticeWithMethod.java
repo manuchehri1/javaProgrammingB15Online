@@ -1,45 +1,104 @@
 package day32;
 
+import java.util.Arrays;
+
 public class ArrayPracticeWithMethod {
     public static void main(String[] args) {
-        int[] score={62,61,63,70};
-        printMax(score);
-        printMinIntArray(score);
-        printSumOfIntArray(score);
-        checkScoresAllMoreThan60(score);
 
+        // this is passing the array object directly into the method
+        printArrayItems(new int[]{1, 6, 5, 3, 12, 3});
+        // this is assigning the array object into a variable
+        // and then pass it into the method
+        int[] scores = {2, 5, 8, 23, 4, 5, 6};
+        printArrayItems(scores);
+
+        printMaxOfIntArray(scores);
+        printMinOfIntArray(scores);
+        printSumOfIntArray(scores);
+
+        compare2arraySize(new String[]{"Sezgin", "Senay", "Astrit"}, new String[]{"Araz"});
+        String[] names1 = {"Superman", "Batman", "Flash"};
+        String[] names2 = {"Wonder Woman", "Cyborg", "Aquaman"};
+
+        compare2arraySize(names1, names2);
 
     }
 
-    public static void arrayPrinter(int[] nums){
+    // printArrayItems
+    // create a method that has one int array as a parameter
+    // print out each item in this format
+    // arrays has items : --->>> all the items here
+    public static void printArrayItems(int[] nums) {
 
-        System.out.println("arrays has items: ");
+        System.out.println("arrays has items :" + Arrays.toString(nums));
+
     }
-    public static void printMax(int[] nums2){
-        int max=nums2[0];
-        for (int i = 0; i <nums2.length ; i++) {
-            if (nums2[i]>max){
-                max=nums2[i];
+    // printMaxOfIntArray
+    // this method has one int array as parameter
+    // and it will print the max number inside the array
+    public static void printMaxOfIntArray(int[] nums) {
+
+        int max = nums[0];
+
+        for (int i = 0; i < nums.length; i++) {
+            if (max < nums[i]) {
+                max = nums[i];
             }
         }
-        System.out.println("max value is "+max);
+        System.out.println("max = " + max);
     }
-    public static void printMinIntArray(int[] nums){
+    // printMinOfIntArray
+    // this method has one int array as parameter
+    // and it will print the min number inside the array
+    public static void printMinOfIntArray(int[] nums) {
+
         int min = nums[0];
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i]<min){
-                min=nums[i];
+            if (min > nums[i]) {
+                min = nums[i];
             }
         }
-        System.out.println("min value is "+min);
+        System.out.println("min = " + min);
     }
-    public static void printSumOfIntArray(int[] nums){
-        int sum =0;
-        for (int i = 0; i < nums.length; i++) {
-            sum+=nums[i];
+
+    // printSumOfIntArray
+    // this method has one int array as parameter
+    // and it will print the sum of all the numbers
+    public static void printSumOfIntArray(int[] nums) {
+
+        int sum = 0;
+        for (int each : nums) {
+            sum = sum + each;  //sum+=each ;
         }
-        System.out.println("sum of all is  "+sum);
+        System.out.println("sum = " + sum);
     }
+
+    /**
+     * compare2arraySize
+     * create a method that accept 2 String array object
+     * and compare the item counts inside these 2 arrays
+     * if arr1 is more then print array 1 has more item
+     * if arr2 is more then print array 2 has more item
+     * else print they have same item count
+     */
+    public static void compare2arraySize(String[] arr1, String[] arr2) {
+
+        if (arr1.length > arr2.length) {
+            System.out.println("array 1 has more item ");
+        } else if (arr1.length < arr2.length) {
+            System.out.println("array 2 has more item ");
+        } else {
+            System.out.println("they have same item count");
+        }
+
+    }
+    // OPTIONALLY
+    // checkScoresAllMoreThan60
+    // this method has one int array as parameter
+    // and it will check whether all the numbers are more than 60
+    // if so print everyone passed
+    // if not print someone has failed
+
     public static void checkScoresAllMoreThan60(int[] nums){
         String passed="NOT PASSED";
         for (int i = 0; i < nums.length; i++) {
